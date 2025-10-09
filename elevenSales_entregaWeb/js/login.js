@@ -1,3 +1,5 @@
+// Limpa a sessão ao entrar na página de login
+localStorage.removeItem('sessao');
 document.getElementById('entrar').addEventListener('click', async function() {
     const logado = await login();
     if (logado) {
