@@ -8,26 +8,27 @@
     <ul style="display:flex; flex-direction:row; list-style-type:none; gap:10px;">
         <li><a href="../index.html">Logout</a></li>
         <li><a href="../home/index.html">Home</a></li>
-        <li><a href="../anuncios/anuncios.html">Meus Anúncios</a></li>
+        <li><a href="../perfil/perfil.html">Perfil</a></li>
         <li><a href="../garagem/garagens.html">Garagens</a></li>
         <li><a href="../conversas/chat.html">Conversas</a></li>
         <li><a href="../carrinho/carrinho.html">Carrinho</a></li>
     </ul>
 </nav>
 <body>
-    <h2>Perfil do Usuário</h2>
-    <div>
-        <label>Nome de usuário:</label>
-        <span id="nomeUsuario"></span>
+    <h2>Meus Anuncios</h2>
+    <div style="display:flex; flex-direction:row;">
+        <div>
+            <h2>Suas garagens</h2>
+            <a href="../garagem/novaGaragem.html">Criar nova garagem</a>
+
+            <ul id="garagens"></ul>
+        </div>
+        <div>
+            <h2>Seus anúncios</h2>
+            <a href="../anuncios/novoAnuncio.html">Criar novo anúncio</a>
+            <div id="anuncios"></div>
+        </div>
     </div>
-    <div>
-        <label>Senha:</label>
-        <span id="senhaUsuario"></span>
-    </div>
-    <div>
-        <button id="editarNome">Editar Nome</button>
-        <button id="editarSenha">Editar Senha</button>
-    </div>
-    <script src="../js/perfil.js"></script>
+    <script src="../js/anuncios.js"></script>
 </body>
 </html>

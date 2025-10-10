@@ -36,10 +36,10 @@ async function mostrarAnuncios() {
         container.innerHTML = '<p>Nenhum anúncio criado</p>';return;
     }
 
-    let html = '<table><tr><td>Nome</td><td>Descrição</td><td>Preço</td><td>condição</td><td>excluir</td></tr>';
+    let html = '<table><tr><td>Nome</td><td>Descrição</td><td>Preço</td><td>condição</td><td>Vendedor</td></tr>';
     for(var i = 0; i < listaAnuncios.length; i++) {
         const anuncio = listaAnuncios[i];
-        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td><td><a href="javascript:excluirAnuncio(\'' + anuncio.id + '\')">Excluir</a></td><td><a href="../anuncios/editarAnuncio.html?id='+ i +'">Editar</a></td></tr>';
+        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td><td>'  + anuncio.nomeVendedor + '</td><td><a href="javascript:excluirAnuncio(\'' + anuncio.id + '\')">Excluir</a></td><td><a href="../anuncios/editarAnuncio.html?id='+ i +'">Editar</a></td></tr>';
 
     };
 

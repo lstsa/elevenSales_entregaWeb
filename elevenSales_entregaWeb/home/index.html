@@ -9,28 +9,18 @@
     <ul style="display:flex; flex-direction:row; list-style-type:none; gap:10px;">
         <li><a href="../index.html">Logout</a></li>
         <li><a href="../perfil/perfil.html">Perfil</a></li>
+        <li><a href="../anuncios/anuncios.html">Meus Anúncios</a></li>
         <li><a href="../garagem/garagens.html">Garagens</a></li>
-        <li><a href="../anuncios/anuncios.html">Anúncios</a></li>
-        <li><a href="../vendas/vendas.html">Vendas</a></li>
+        <li><a href="../conversas/chat.html">Conversas</a></li>
         <li><a href="../carrinho/carrinho.html">Carrinho</a></li>
     </ul>
 </nav>
 <body>
-    <div style="display:flex; flex-direction:row;">
-        <div>
-            <h2>Suas garagens</h2>
-            <a href="../garagem/novaGaragem.html">Criar nova garagem</a>
-
-            <ul id="garagens"></ul>
-        </div>
-        <div>
-            <h2>Seus anúncios</h2>
-            <a href="../anuncios/novoAnuncio.html">Criar novo anúncio</a>
-
-            <div id="anuncios"></div>
-        </div>
+    <div id="mensagem">
+        <h1>Bem-vindo ao Eleven Sales!</h1>
+        <h2>Anuncios disponiveis</h2>
     </div>
-
+    <div id="anuncios"></div>
     <script src="../js/home.js"></script>
 </body>
 </html>
