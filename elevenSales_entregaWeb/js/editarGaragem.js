@@ -32,6 +32,6 @@ async function mostrar() {
         listaGaragens[id] = garagem;
         localStorage.setItem('garagens', JSON.stringify(listaGaragens));
 
-        window.location.href = '../home/index.html';
+        window.location.href = '../garagem/garagens.html';
     });
 }

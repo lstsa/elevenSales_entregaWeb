@@ -1,4 +1,4 @@
-// Limpa a sessão ao entrar na página de login
+
 localStorage.removeItem('sessao');
 document.getElementById('entrar').addEventListener('click', async function() {
     const logado = await login();
@@ -8,17 +8,13 @@ document.getElementById('entrar').addEventListener('click', async function() {
 });
 
 async function login() {
-    const listaUsuarios = JSON.parse(localStorage.getItem('listaUsuarios') || '[]'); 
+    
     var usuario = document.getElementById('usuario').value;
     var senha = document.getElementById('senha').value;
 
-    if (usuario === '' || senha === '') {
-        document.getElementById("msgErro").textContent = "Preencha todos os campos!";
-        return false;
-    }
 
-    const usuarioEncontrado = listaUsuarios.find(u => u.usua === usuario && u.senha === senha);
-    if (!usuarioEncontrado) {
+    const usuarioAtual = JSON.parse(localStorage.getItem('usuario') || '{}')
+    if (usuarioAtual.usua !== usuario || usuarioAtual.senha !== senha) {
         document.getElementById("msgErro").textContent = "Usuário ou senha inválidos!";
         return false;
     }

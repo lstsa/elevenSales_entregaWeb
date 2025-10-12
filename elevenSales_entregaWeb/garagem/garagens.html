@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Perfil do Usuário</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>garagens</title>
 </head>
 <nav>
     <ul style="display:flex; flex-direction:row; list-style-type:none; gap:10px;">
         <li><a href="../index.html">Logout</a></li>
-        <li><a href="../home/index.html">Home</a></li>
+        <li><a href="../perfil/perfil.html">Perfil</a></li>
         <li><a href="../anuncios/anuncios.html">Meus Anúncios</a></li>
         <li><a href="../garagem/garagens.html">Garagens</a></li>
         <li><a href="../conversas/chat.html">Conversas</a></li>
@@ -15,18 +16,12 @@
     </ul>
 </nav>
 <body>
-    <h2>Perfil do Usuário</h2>
     <div>
-        <label>Nome de usuário:</label>
-        <span id="nomeUsuario"></span>
+        <h2>Suas garagens</h2>
+        <a href="../garagem/novaGaragem.html">Criar nova garagem</a>
+
+        <ul id="garagens"></ul>
     </div>
-    <div>
-        <label>Senha:</label>
-        <span id="senhaUsuario"></span>
-    </div>
-    <div>
-        <button id="editarPerfil">Editar Perfil</button>
-    </div>
-    <script src="../js/perfil.js"></script>
+    <script src="../js/garagens.js"></script>
 </body>
 </html>
