@@ -2,7 +2,26 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarAnuncios();
 });
 
+async function mostrarGaragens() {
+    const listaGaragens = JSON.parse(localStorage.getItem('garagens') || '[]')
 
+    if (listaGaragens.length === 0) {
+
+        const container = document.getElementById('garagens');
+
+        if (!container) return;
+
+        container.innerHTML = '<li>Nenhuma garagem criada</li>';return;
+    }
+
+    let html = '<table><tr><td>Garagens</td><td>Excluir</td><td>Editar</td></tr>';
+    for(var i=0; i < listaGaragens.length;i++) {
+        const garagem = listaGaragens[i];
+        html += '<tr><td><li>' + garagem.nome + '</li></td><td><a href="javascript:excluirGaragem(\'' + garagem.id + '\')">Excluir</a></td><td><a href="../garagem/editarGaragem.html?id='+i+' ">Editar</a></td></tr>';
+    };
+
+    document.getElementById('garagens').innerHTML = html;
+}
 
 async function mostrarAnuncios() {
     const listaAnuncios = JSON.parse(localStorage.getItem('anuncios') || '[]');
@@ -18,18 +37,25 @@ async function mostrarAnuncios() {
     let html = '<table><tr><td>Nome</td><td>Descrição</td><td>Preço</td><td>condição</td><td>Vendedor</td></tr>';
     for(var i = 0; i < listaAnuncios.length; i++) {
         const anuncio = listaAnuncios[i];
-        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td><td>'  + anuncio.nomeVendedor + '</td><td><a href="javascript:excluirAnuncio(\'' + listaAnuncios.i + '\')">Excluir</a></td><td><a href="../anuncios/editarAnuncio.html?id='+ i +'">Editar</a></td><td><a href="../carrinho/carrinho.htmlid="' + i + '"><button> Add anúncio ao carrinho<button></a></tr>';
+        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td><td>'  + anuncio.nomeVendedor + '</td><td><a href="javascript:excluirAnuncio(\'' + anuncio.id + '\')">Excluir</a></td><td><a href="../anuncios/editarAnuncio.html?id='+ i +'">Editar</a></td></tr>';
 
     };
 
     document.getElementById('anuncios').innerHTML = html;
 };
 
+async function excluirGaragem(id) {
+    const listaGaragens = JSON.parse(localStorage.getItem('garagens') || '[]');
+    const novalista = listaGaragens.filter(garagem => garagem.id !== id);
+    localStorage.setItem('garagens', JSON.stringify(novalista));
 
-async function excluirAnuncio(i) {
+    window.location.reload();
+}
+
+async function excluirAnuncio(id) {
     const listaAnuncios = JSON.parse(localStorage.getItem('anuncios') || '[]');
-    listaAnuncios.splice(i, 1);
-    localStorage.setItem('anuncios', JSON.stringify(listaAnuncios));
+    const novalista = listaAnuncios.filter(anuncio => anuncio.id !== id);
+    localStorage.setItem('anuncios', JSON.stringify(novalista));
 
     window.location.reload();
 }
