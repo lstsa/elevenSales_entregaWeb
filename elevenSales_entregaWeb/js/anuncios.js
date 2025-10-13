@@ -18,7 +18,7 @@ async function mostrarAnuncios() {
     let html = '<table><tr><td>Nome</td><td>Descrição</td><td>Preço</td><td>condição</td><td>Vendedor</td></tr>';
     for(var i = 0; i < listaAnuncios.length; i++) {
         const anuncio = listaAnuncios[i];
-        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td><td>'  + anuncio.nomeVendedor + '</td><td><a href="javascript:excluirAnuncio(\'' + listaAnuncios.i + '\')">Excluir</a></td><td><a href="../anuncios/editarAnuncio.html?id='+ i +'">Editar</a></td></tr>';
+        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td><td>'  + anuncio.nomeVendedor + '</td><td><a href="javascript:excluirAnuncio(\'' + listaAnuncios.i + '\')">Excluir</a></td><td><a href="../anuncios/editarAnuncio.html?id='+ i +'">Editar</a></td><td><a href="../carrinho/carrinho.htmlid="' + i + '"><button> Add anúncio ao carrinho<button></a></tr>';
 
     };
 
