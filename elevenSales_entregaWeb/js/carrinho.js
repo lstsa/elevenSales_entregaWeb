@@ -1,22 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const idAnuncio = params.get('id');
 
-    if (idAnuncio) {
-        adicionarAoCarrinho(idAnuncio);
-    }
+
+
+    adicionarAoCarrinho();
 
     mostrarCarrinho();
 });
 
-function adicionarAoCarrinho(idAnuncio) {
+function adicionarAoCarrinho() {
+
+    const params = new URLSearchParams(window.location.search);
+    const idAnuncio = params.get('id');
+
     const listaAnuncios = JSON.parse(localStorage.getItem('anuncios') || '[]');
     let carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
 
     const anuncio = listaAnuncios[idAnuncio];
+    console.log("ID:", idAnuncio);
+    console.log("Lista de anúncios:", listaAnuncios);
+    console.log("Anúncio encontrado:", anuncio);
     if (!anuncio) return;
 
-     const existente = carrinho.find(item => item.nome === anuncio.nome);
+    const existente = carrinho.find(item => item.nome === anuncio.nome);
     if (existente) {
         existente.quantidade++;
     } else {

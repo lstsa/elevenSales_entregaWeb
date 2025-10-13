@@ -15,10 +15,14 @@ async function mostrarAnuncios() {
         container.innerHTML = '<p>Nenhum anúncio criado</p>';return;
     }
 
-    let html = '<table><tr><td>Nome</td><td>Descrição</td><td>Preço</td><td>condição</td><td>Vendedor</td></tr>';
+    let html = '<table><tr><td>Nome</td><td>Descrição</td><td>Preço</td><td>condição</td><td>Garagem</td></tr>';
     for(var i = 0; i < listaAnuncios.length; i++) {
         const anuncio = listaAnuncios[i];
-        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td><td>'  + anuncio.nomeVendedor + '</td><td><a href="javascript:excluirAnuncio(\'' + listaAnuncios.i + '\')">Excluir</a></td><td><a href="../anuncios/editarAnuncio.html?id='+ i +'">Editar</a></td><td><a href="../carrinho/carrinho.htmlid="' + i + '"><button> Add anúncio ao carrinho<button></a></tr>';
+        html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td>' + '<td>' + anuncio.garagem + '</td>' +
+        '<td><a href="javascript:excluirAnuncio(' + i + ')">Excluir</a></td>' +
+        '<td><a href="../anuncios/editarAnuncio.html?id=' + i + '">Editar</a></td>' +
+        '<td><a href="../carrinho/carrinho.html?id=' + i + '"><button>Adicionar ao carrinho</button></a></td></tr>';
+
 
     };
 
@@ -28,6 +32,17 @@ async function mostrarAnuncios() {
 
 async function excluirAnuncio(i) {
     const listaAnuncios = JSON.parse(localStorage.getItem('anuncios') || '[]');
+    const listaGaragens = JSON.parse(localStorage.getItem('garagens') || '[]');
+    const anuncio = listaAnuncios[i];
+    
+    for (let j = 0; j < listaGaragens.length; j++) {
+        const garagem = listaGaragens[j];
+        garagem.anunciosGaragem = garagem.anunciosGaragem.filter(a => a.nome !== anuncio.nome);
+        listaGaragens[j] = garagem;
+    }
+
+    localStorage.setItem('garagens', JSON.stringify(listaGaragens));
+
     listaAnuncios.splice(i, 1);
     localStorage.setItem('anuncios', JSON.stringify(listaAnuncios));
 

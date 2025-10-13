@@ -13,6 +13,7 @@
         <li><a href="../garagem/garagens.html">Garagens</a></li>
         <li><a href="../conversas/chat.html">Conversas</a></li>
         <li><a href="../carrinho/carrinho.html">Carrinho</a></li>
+        <li><a href="../home/index.html">Home</a></li>
     </ul>
 </nav>
 <body>
@@ -27,14 +28,16 @@
     <input type="number" id="preco" required>
     <br>
     <label for="condicao">Condição:</label>
-    <select id="condicao">
+    <select id="condicao" required>
+        <option value="" disabled selected>Selecione uma opção</option>
         <option value="novo">Novo</option>
         <option value="usado">Usado</option>
     </select>
     <label for="selectGaragem">Garagem:</label>
-    <select id="selectGaragem"></select>
+    <select id="selectGaragem" required></select>
+
     <br>
-    <button id="criarAnuncio">Criar anuncio</button>
+    <button type="button" id="criarAnuncio">Criar anúncio</button>
 
     <script src="../js/criarAnuncios.js"></script>
 </body>
