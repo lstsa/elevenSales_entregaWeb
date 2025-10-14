@@ -2,39 +2,51 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarForm();
 });
 
-async function mostrarForm() {
-    const form = JSON.parse(localStorage.getItem('usuario') || '[]');
-    const container = document.getElementById('editForm');
+function mostrarForm() {
+    const sessao = JSON.parse(localStorage.getItem('sessao') || '{}');
+    const listaUsuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuarioIndex = listaUsuarios.findIndex(u => u.usuario === sessao.usuario);
 
-    container.innerHTML = '';
-
-    for (let i in form){
-
-        container.innerHTML += '<label for="' + i + '">' + i + ': </label><input type="text" id="' + i + '" value="' + form[i] + '"/><br/>';
+    if (usuarioIndex === -1) {
+        document.getElementById('editForm').innerHTML = '<p>Usuário não encontrado.</p>';
+        return;
     }
 
-    container.innerHTML += '<button id="salvar">Salvar</button>';
+    const usuario = listaUsuarios[usuarioIndex];
+    const container = document.getElementById('editForm');
+
+    container.innerHTML = `
+        <label>Usuário: <input type="text" id="usuario" value="${usuario.usuario}" /></label><br/>
+        <label>Senha: <input type="password" id="senha" value="${usuario.senha}" /></label><br/>
+        <label>Confirmar Senha: <input type="password" id="confirmaSenha" value="${usuario.confirmaSenha || usuario.senha}" /></label><br/>
+        <label>Idade: <input type="number" id="idade" value="${usuario.idade || ''}" /></label><br/>
+        <label>Telefone: <input type="text" id="telefone" value="${usuario.telefone || ''}" /></label><br/>
+        <label>Email: <input type="email" id="email" value="${usuario.email || ''}" /></label><br/>
+        <button id="salvar">Salvar</button>
+    `;
 
     document.getElementById('salvar').addEventListener('click', function() {
-        for (let i in form) {
-            form[i] = document.getElementById(i).value;
-        }
+        const novaSenha = document.getElementById('senha').value;
+        const confirmaSenha = document.getElementById('confirmaSenha').value;
 
-        if (form.senha !== form.confirmaSenha) {
-            alert("Senhas devem Ser Iguais");
+        if (novaSenha !== confirmaSenha) {
+            alert("Senhas devem ser iguais");
             return;
         }
 
-        const sessao = JSON.parse(localStorage.getItem('sessao') || '{}');
+        listaUsuarios[usuarioIndex] = {
+            usuario: document.getElementById('usuario').value,
+            senha: novaSenha,
+            confirmaSenha: confirmaSenha,
+            idade: document.getElementById('idade').value,
+            telefone: document.getElementById('telefone').value,
+            email: document.getElementById('email').value
+        };
 
-        sessao.usuario = form.usua;
-        sessao.senha = form.senha;
-
-        localStorage.setItem('sessao', JSON.stringify(sessao));
-
-        localStorage.setItem('usuario', JSON.stringify(form));
+        const resposta = { usuario: document.getElementById('usuario').value, senha: novaSenha };
+        localStorage.setItem('usuarios', JSON.stringify(listaUsuarios));
+        localStorage.setItem('sessao', JSON.stringify(resposta));
 
         window.location.href = '../perfil/perfil.html';
-    })
-
+    });
 }

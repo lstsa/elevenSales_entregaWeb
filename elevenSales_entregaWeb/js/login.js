@@ -1,4 +1,3 @@
-
 localStorage.removeItem('sessao');
 document.getElementById('entrar').addEventListener('click', async function() {
     const logado = await login();
@@ -8,13 +7,13 @@ document.getElementById('entrar').addEventListener('click', async function() {
 });
 
 async function login() {
-    
     var usuario = document.getElementById('usuario').value;
     var senha = document.getElementById('senha').value;
 
+    const listaUsuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuarioEncontrado = listaUsuarios.find(u => u.usuario === usuario && u.senha === senha);
 
-    const usuarioAtual = JSON.parse(localStorage.getItem('usuario') || '{}')
-    if (usuarioAtual.usua !== usuario || usuarioAtual.senha !== senha) {
+    if (!usuarioEncontrado) {
         document.getElementById("msgErro").textContent = "Usuário ou senha inválidos!";
         return false;
     }

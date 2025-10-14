@@ -6,8 +6,8 @@ document.getElementById("cadastrar").addEventListener("click", function(){
 });
 
 function armazenar(){
-    const usuario = {usua: "", senha:"", confirmaSenha: ""};
-    usuario.usua = document.getElementById("usuario").value;
+    const usuario = {usuario: "", senha:"", confirmaSenha: "", idade:"", telefone:"", email:""};
+    usuario.usuario = document.getElementById("usuario").value;
     usuario.senha = document.getElementById("senha").value;
     usuario.idade = document.getElementById("idade").value;
     usuario.telefone = document.getElementById("telefone").value;
@@ -15,15 +15,20 @@ function armazenar(){
     usuario.confirmaSenha = document.getElementById("confirmaSenha").value;
 
     document.getElementById("msgErro").textContent = "";
-    if(usuario.senha != usuario.confirmaSenha){
+    if(usuario.senha !== usuario.confirmaSenha){
         document.getElementById("msgErro").textContent = "Senhas não conferem!";
         return false;
     }
     
-    localStorage.setItem('usuario', JSON.stringify(usuario));
+    if (listaUsuarios.some(u => u.usuario === usuario.usuario)) {
+        document.getElementById("msgErro").textContent = "Usuário já cadastrado!";
+        return false;
+    }
+    
+    const listaUsuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+    listaUsuarios.push(usuario);
+    localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
+    
+
     return true;
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    localStorage.clear();
-});
