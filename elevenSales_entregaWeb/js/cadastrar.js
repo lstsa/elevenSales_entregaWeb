@@ -9,6 +9,7 @@ function armazenar(){
     const usuario = {usua: "", senha:"", confirmaSenha: ""};
     usuario.usua = document.getElementById("usuario").value;
     usuario.senha = document.getElementById("senha").value;
+    
     usuario.confirmaSenha = document.getElementById("confirmaSenha").value;
 
     document.getElementById("msgErro").textContent = "";
