@@ -20,8 +20,7 @@ async function mostrarAnuncios() {
         const anuncio = listaAnuncios[i];
         html += '<tr><td>' + anuncio.nome + '</td><td>' + anuncio.descricao + '</td><td>' + anuncio.preco + '</td><td>' + anuncio.condicao + '</td>' + '<td>' + anuncio.garagem + '</td>' +
         '<td><a href="javascript:excluirAnuncio(' + i + ')">Excluir</a></td>' +
-        '<td><a href="../anuncios/editarAnuncio.html?id=' + i + '">Editar</a></td>' +
-        '<td><a href="../carrinho/carrinho.html?id=' + i + '"><button>Adicionar ao carrinho</button></a></td></tr>';
+        '<td><a href="../anuncios/editarAnuncio.html?id=' + i + '">Editar</a></td>';
 
 
     };

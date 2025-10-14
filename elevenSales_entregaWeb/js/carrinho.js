@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-
-
     adicionarAoCarrinho();
 
     mostrarCarrinho();

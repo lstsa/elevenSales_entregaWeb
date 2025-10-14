@@ -20,12 +20,13 @@ function armazenar(){
         return false;
     }
     
+    
+    
+    const listaUsuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
     if (listaUsuarios.some(u => u.usuario === usuario.usuario)) {
         document.getElementById("msgErro").textContent = "Usuário já cadastrado!";
         return false;
     }
-    
-    const listaUsuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
     listaUsuarios.push(usuario);
     localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
     
