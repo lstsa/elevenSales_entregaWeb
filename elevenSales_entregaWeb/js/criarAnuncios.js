@@ -43,7 +43,8 @@ async function criarAnuncio() {
         'descricao': descricaoAnuncio,
         'preco': precoAnuncio,
         'condicao': condicaoAnuncio,
-        'garagem': garagem
+        'garagem': garagem,
+        'denunciado':false
     };
 
 

@@ -22,7 +22,7 @@ function mostrarUsuarios() {
     for (let i = 0; i < listaUsuarios.length; i++) {
         const usuario = listaUsuarios[i];
         html += `<tr>
-            <td>${usuario.usua}</td>
+            <td>${usuario.usuario}</td>
             <td>${usuario.senha}</td>
             <td>${usuario.idade}</td>
             <td>${usuario.telefone}</td>
