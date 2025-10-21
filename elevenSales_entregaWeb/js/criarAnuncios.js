@@ -38,7 +38,8 @@ async function criarAnuncio() {
         'descricao': descricaoAnuncio,
         'preco': precoAnuncio,
         'condicao': condicaoAnuncio,
-        'garagem': garagem
+        'garagem': garagem,
+        'denunciado': false
     };
 
     const listaAnuncios = JSON.parse(localStorage.getItem('anuncios') || '[]');
